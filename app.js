@@ -1,3 +1,49 @@
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+
+import {
+  getAuth,
+  GoogleAuthProvider,
+  signInWithPopup,
+  signOut,
+  onAuthStateChanged
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+
+const firebaseConfig = {
+  apiKey: "YOUR_API_KEY",
+  authDomain: "YOUR_AUTH_DOMAIN",
+  projectId: "YOUR_PROJECT_ID",
+  appId: "YOUR_APP_ID"
+};
+
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+
+const provider = new GoogleAuthProvider();
+
+async function googleLogin() {
+  try {
+    await signInWithPopup(auth, provider);
+  } catch (err) {
+    console.error(err);
+  }
+}
+
+async function logout() {
+  await signOut(auth);
+}
+
+onAuthStateChanged(auth, (user) => {
+  if (user) {
+    document.getElementById("userInfo").innerText =
+      user.email || "Google User";
+  } else {
+    document.getElementById("userInfo").innerText =
+      "로그인 안됨";
+  }
+});
+
+window.googleLogin = googleLogin;
+window.logout = logout;
 const map = L.map('map', {
   zoomControl: false
 }).setView([37.5665, 126.9780], 13);
