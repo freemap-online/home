@@ -8,12 +8,17 @@ import {
   onAuthStateChanged
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 
-const firebaseConfig = {
-  apiKey: "YOUR_API_KEY",
-  authDomain: "YOUR_AUTH_DOMAIN",
-  projectId: "YOUR_PROJECT_ID",
-  appId: "YOUR_APP_ID"
-};
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyDU8QWgenEwkaebdgBakK-QBDTpTrInKr8",
+    authDomain: "login-83ade.firebaseapp.com",
+    projectId: "login-83ade",
+    storageBucket: "login-83ade.firebasestorage.app",
+    messagingSenderId: "841879990592",
+    appId: "1:841879990592:web:658dd0dd904d699b204aa5",
+    measurementId: "G-LQQ51BP0KS"
+  };
+
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
